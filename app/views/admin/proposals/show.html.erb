@@ -1,0 +1,30 @@
+<% title 'Éditer une conférence' %>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="alert alert-info">
+				<p>
+					Merci de renseigner les informations ci-dessous.
+					Il sera possible de corriger ces renseignements jusqu'au <%= l @party.proposal_to %>,
+					date de l'impression des programmes papier.
+				</p>
+				<p>
+					Pour la modification des informations, une URL vous sera envoyée par mail,
+					<strong>utilisez donc une adresse mail valide.</strong>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12 container">
+			<div class="row">
+				<div class="col-sm-12">
+					<%= form_for @proposal, html: { class: %i(well form-horizontal) } do |f| %>
+						<%= render 'proposals/form', f: f %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

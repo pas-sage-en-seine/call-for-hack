@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<th></th>
+						<td>Nom</td>
+						<td>Titre</td>
+					</tr>
+				</thead>
+				<tbody>
+					<% @proposals.each do |p| %>
+						<tr>
+							<th>
+								<%= link_to [:admin, p] do
+								   image_tag 'empty.png', alt: 'Afficher proposition', class: 'sprite-silk-date_go'
+								end %>
+								<%= link_to [:admin, p], method: :delete, data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette proposition ?' } do
+								   image_tag 'empty.png', title: 'Supprimer proposition', class: 'sprite-silk-date_delete'
+								end %>
+							</th>
+							<td><%= p.name %></td>
+							<td><%= p.description %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

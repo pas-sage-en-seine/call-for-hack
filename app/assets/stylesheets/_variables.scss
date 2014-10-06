@@ -1,0 +1,104 @@
+// United 3.2.0
+// Variables
+// --------------------------------------------------
+
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+$gray-dark:              #333;
+$gray:                   #777;
+$gray-light:             #AEA79F;
+
+$brand-primary:         #DD4814;
+$brand-success:         #38B44A;
+$brand-info:            #772953;
+$brand-warning:         #EFB73E;
+$brand-danger:          #DF382C;
+
+//== Typography
+//
+//## Font, line-height, and color for body text, headings, and more.
+
+$font-family-sans-serif:  "Ubuntu", Tahoma, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+//== Buttons
+//
+//## For each of Bootstrap's buttons, define text, background and border color.
+
+$btn-default-color:              #fff;
+$btn-default-bg:                 $gray-light;
+
+//== Dropdowns
+//
+//## Dropdown menu container and contents.
+
+//** Hover color for dropdown links.
+$dropdown-link-hover-color:      #fff;
+
+//** Active dropdown menu item text color.
+$dropdown-link-active-color:     #fff;
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+$navbar-default-color:             #fff;
+$navbar-default-bg:                $brand-primary;
+
+// Navbar links
+$navbar-default-link-color:                #fff;
+$navbar-default-link-hover-color:          #fff;
+$navbar-default-link-active-color:         #fff;
+$navbar-default-link-active-bg:            darken($navbar-default-bg, 10%);
+
+// Navbar toggle
+$navbar-default-toggle-icon-bar-bg:        #fff;
+
+
+// Inverted navbar
+// Reset inverted navbar basics
+$navbar-inverse-color:                      #fff;
+$navbar-inverse-bg:                         $brand-primary;
+
+// Inverted navbar links
+$navbar-inverse-link-color:                 #fff;
+$navbar-inverse-link-hover-color:           #fff;
+$navbar-inverse-link-disabled-color:        #ccc;
+
+// Inverted navbar toggle
+$navbar-inverse-toggle-hover-bg:            darken($navbar-inverse-bg, 15%);
+$navbar-inverse-toggle-icon-bar-bg:         #fff;
+$navbar-inverse-toggle-border-color:        darken($navbar-inverse-bg, 15%);
+
+
+//== Pagination
+//
+//##
+
+$pagination-active-color:              $gray-light;
+$pagination-active-bg:                 #f5f5f5;
+$pagination-active-border:             #ddd;
+
+
+//== Pager
+//
+//##
+
+$pager-disabled-color:                 $gray-light;
+
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+$state-success-text:             #468847;
+
+$state-info-text:                #3a87ad;
+
+$state-warning-text:             #c09853;
+
+$state-danger-text:              #b94a48;

@@ -1,0 +1,27 @@
+//= require_tree .
+//= require_self
+
+@font-face {
+	font-family: Ubuntu;
+	src: font-url('Ubuntu.ttf');
+}
+
+@import "variables";
+@import "bootstrap";
+
+.right {
+	text-align: right;
+}
+
+.justify {
+	text-align: justify;
+}
+
+body {
+	padding-top: 70px;
+}
+
+.navbar-brand {
+	font-weight: bold;
+	font-size: 25px;
+}
