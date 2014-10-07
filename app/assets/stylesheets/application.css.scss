@@ -17,6 +17,22 @@
 	text-align: justify;
 }
 
+.danger {
+	color: $state-danger-text;
+}
+
+.warning {
+	color: $state-warning-text;
+}
+
+.success {
+	color: $state-success-text;
+}
+
+.info {
+	color: $state-info-text;
+}
+
 body {
 	padding-top: 70px;
 }

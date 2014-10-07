@@ -5,7 +5,7 @@
 			<h1>Appel à conférences</h1>
 		</div>
 		<div class="col-sm-5 right">
-			<h2>Pour l'appel à bénévoles</h2>
+			<h2>Pour l’appel à bénévoles</h2>
 			<p>
 				<a href="http://participer.ubuntu-paris.org/?appel=benevole" class="btn btn-primary btn-lg">
 					C'est par ici
@@ -23,11 +23,13 @@
 			<div class="alert alert-info">
 				<p>
 					Merci de renseigner les informations ci-dessous.
-					Il sera possible de corriger ces renseignements jusqu'au <%= l @party.proposal_to %>,
-					date de l'impression des programmes papier.
+					Il sera possible de corriger ces renseignements jusqu'au
+					<%= l @party.proposal_to %>, date de l’impression des
+					programmes papier.
 				</p>
 				<p>
-					Pour la modification des informations, une URL vous sera envoyée par mail,
+					Pour la modification des informations, une URL vous sera
+					envoyée par mail,
 					<strong>utilisez donc une adresse mail valide.</strong>
 				</p>
 			</div>
@@ -79,13 +81,49 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div class="panel panel-default">
-						<div class="panel-body">
-							<p><strong>Données personnelles</strong></p>
-							<p class="justify">
+						<div class="panel-body justify">
+							<p>
+								<strong>
+									Données personnelles
+								</strong>
+							</p>
+							<p>
 								Ces informations sont nécessaires à l’équipe
 								d’organisation de l’événement, elles ne sont pas
 								destinées à être divulguées à un quelconque
 								partenaire ni à servir une opération de spam.
+							</p>
+							<p class="success">
+								<strong>
+									Informations publiques
+								</strong>
+							</p>
+							<p class="success">
+								Elles seront publiées en totalités ou de façon
+								partielles sur le site ubuntu-paris.org, le
+								programme papier, l’application pour téléphone
+								Android et au format ICal.
+							</p>
+							<p class="warning">
+								<strong>
+									Informations privées
+								</strong>
+							</p>
+							<p class="warning">
+								Ces informations sont nécessaires à l’équipe
+								d’organisation de l’événement, elles ne sont pas
+								destinées à être divulguées à un quelconque
+								partenaire ni à servir une opération de spam.
+							</p>
+							<p class="danger">
+								<strong>
+									Nom et prénom
+								</strong>
+							</p>
+							<p class="danger">
+								Vous pouvez choisir de ne pas afficher
+								publiquement votre nom et prénom en cochant la
+								case « privé ».
 							</p>
 						</div>
 					</div>

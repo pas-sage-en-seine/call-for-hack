@@ -31,7 +31,7 @@ class ProposalsController < ApplicationController
 	def destroy
 		@proposal = Proposal.find_by_token params[:id]
 		@proposal.delete
-		return render :closed if @party.proposal_to > Date.today
+		return render :closed if @party.proposal_to < Date.today
 		flash[:success] = 'Proposition de conférence supprimée'
 	end
 
@@ -41,7 +41,7 @@ class ProposalsController < ApplicationController
 	def edit
 		@proposal = Proposal.find_by_token params[:id]
 		@party = @proposal.party
-		return render :closed if @party.proposal_to > Date.today
+		return render :closed if @party.proposal_to < Date.today
 	end
 
 	def update

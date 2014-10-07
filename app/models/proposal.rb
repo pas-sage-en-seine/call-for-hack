@@ -10,7 +10,11 @@ class Proposal < ActiveRecord::Base
 	end
 
 	def name
-		self.firstname? ? "#{self.firstname} #{self.surname}" : self.nickname
+		self.nickname? ? self.nickname : "#{self.firstname} #{self.surname}"
+	end
+
+	def shortname
+		self.nickname? ? self.nickname : self.firstname
 	end
 
 	def self.hours
