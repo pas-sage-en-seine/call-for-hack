@@ -4,7 +4,12 @@ require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
-Bundler.require(*Rails.groups)
+groups = Rails.groups
+unless Rails.env == 'production'
+	groups << :assets
+	Rails.env = 'production' if Rails.env == 'staging'
+end
+Bundler.require(*groups)
 
 module Orga
 	class Application < Rails::Application
