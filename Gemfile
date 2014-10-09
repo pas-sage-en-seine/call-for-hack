@@ -5,6 +5,8 @@ gem 'rails', '4.1.6'
 gem 'sqlite3'
 gem 'pg', group: :production
 
+gem 'scrypt'
+
 group :assets do
 	gem 'sass-rails'
 	gem 'coffee-rails'

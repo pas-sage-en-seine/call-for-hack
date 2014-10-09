@@ -1,5 +1,6 @@
 class Proposal < ActiveRecord::Base
 	belongs_to :party
+	has_many :marks
 
 	validates :title, :description, :email, presence: true
 	validates :nickname, presence: { message: 'Vous devez renseigner un nom ou un pseudonyme'}, unless: :surname?
@@ -23,5 +24,13 @@ class Proposal < ActiveRecord::Base
 
 	def to_param
 		self.token
+	end
+
+	def to_s
+		self.title
+	end
+
+	def score
+		self.marks.size
 	end
 end

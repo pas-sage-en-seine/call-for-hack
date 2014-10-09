@@ -6,7 +6,12 @@ Rails.application.routes.draw do
 	end
 
 	namespace :admin do
-		resources :proposals, only: %i(index show destroy)
+		resources :proposals, only: %i(index show destroy) do
+			member do
+				get :mark
+				get :unmark
+			end
+		end
 	end
 
 	root 'site#index'

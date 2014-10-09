@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141005195244) do
+ActiveRecord::Schema.define(version: 20141009193301) do
+
+  create_table "admins", force: true do |t|
+    t.text     "name"
+    t.text     "login"
+    t.text     "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "marks", force: true do |t|
+    t.integer  "admin_id"
+    t.integer  "proposal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "parties", force: true do |t|
     t.date     "from",          null: false
