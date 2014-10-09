@@ -20,7 +20,7 @@
 		<div class="col-sm-12 container">
 			<div class="row">
 				<div class="col-sm-12">
-					<%= form_for proposal_path(@proposal), html: { class: %i(well form-horizontal) } do |f| %>
+					<%= form_for @proposal, method: :patch, html: { class: %i(well form-horizontal) } do |f| %>
 						<%= render 'form', f: f %>
 
 						<div class="form-group">
