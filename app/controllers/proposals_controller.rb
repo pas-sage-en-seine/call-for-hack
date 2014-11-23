@@ -1,11 +1,13 @@
 class ProposalsController < ApplicationController
 	def new
 		@party = Party.first
+		return render :closed if @party.proposal_to < Date.today
 		@proposal = @party.proposals.new
 	end
 
 	def create
 		@party = Party.first
+		return render :closed if @party.proposal_to < Date.today
 		values = params.require(:proposal).permit %i(surname surname_private firstname firstname_private nickname twitter site format optimal_duration minimal_duration maximal_duration title description email phone)
 		availability = {}
 		%i(saturday sunday).each do |day|
@@ -48,10 +50,10 @@ class ProposalsController < ApplicationController
 		@proposal = Proposal.find_by_token params[:id]
 		@party = @proposal.party
 		values = params.require(:proposal).permit %i(surname surname_private firstname firstname_private nickname twitter site format optimal_duration minimal_duration maximal_duration title description email phone)
-		availability = {}
-		%i(saturday sunday).each do |day|
-			availability[day] = {from: params["#{day}_from"], to: params["#{day}_to"]} if bool(params, day)
-		end
+		# availability = {}
+		# %i(saturday sunday).each do |day|
+		# 	availability[day] = {from: params["#{day}_from"], to: params["#{day}_to"]} if bool(params, day)
+		# end
 		p values
 		values[:availability] = JSON.generate availability
 

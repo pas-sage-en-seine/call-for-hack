@@ -6,5 +6,7 @@ class CreateMarks < ActiveRecord::Migration
 
 			t.timestamps
 		end
+
+		add_index :marks, %i(admin_id proposal_id), unique: true
 	end
 end

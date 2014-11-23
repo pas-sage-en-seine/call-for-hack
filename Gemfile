@@ -15,7 +15,8 @@ group :assets do
 	gem 'bootstrap-sass'
 	#gem 'font-awesome-sass'
 	#gem 'bootstrap-switch-rails'
-	gem 'turbolinks'
+	#gem 'turbolinks'
+	#gem 'turbolinks-redirect'
 	gem 'therubyracer', platforms: :ruby
 	gem 'uglifier'
 end

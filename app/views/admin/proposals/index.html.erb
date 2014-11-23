@@ -6,6 +6,7 @@
 					<tr>
 						<td></td>
 						<th>Score</th>
+						<th>Type</th>
 						<th>Nom</th>
 						<th>Titre</th>
 					</tr>
@@ -17,21 +18,24 @@
 								<%= link_to [:admin, p] do
 									image_tag 'empty.png', alt: 'Afficher proposition', class: 'sprite-silk-date_go'
 								end %>
-								<%= link_to [:admin, p], method: :delete,
+								<%#= link_to [:admin, p], method: :delete,
 										data: { confirm: 'Êtes-vous sûr de vouloir supprimer cette proposition ?' } do
 									image_tag 'empty.png', title: 'Supprimer proposition', class: 'sprite-silk-date_delete'
 								end %>
+							</th>
+							<td>
+								<%= p.score %>
 								<%= if @me.proposals.include? p
-									link_to [:unmark, :admin, p] do
-										image_tag 'empty.png', title: 'Supprimer proposition', class: 'sprite-silk-award_star_delete'
-									end
+								   link_to [:unmark, :admin, p] do
+									  image_tag 'empty.png', title: 'Moinsser proposition', class: 'sprite-silk-delete'
+								   end
 								else
 								   link_to [:mark, :admin, p] do
-									  image_tag 'empty.png', title: 'Supprimer proposition', class: 'sprite-silk-award_star_add'
+									  image_tag 'empty.png', title: 'Plusser proposition', class: 'sprite-silk-add'
 								   end
 								end %>
-							</th>
-							<td><%= p.score %></td>
+							</td>
+							<td><%= t p.format %></td>
 							<td><%= p.name %></td>
 							<td>
 								<p><strong><%= p.title %></strong></p>

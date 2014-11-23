@@ -7,6 +7,10 @@
 # Emended by Benjamin des Gachons and Patrick Chew : <http://www.fitima.org/docs/fiche.pdf>
 
 fr:
+  conference: Conférence
+  exhibit: Démonstration
+  workshop: Atelier
+
   date:
     abbr_day_names:
       - dim
