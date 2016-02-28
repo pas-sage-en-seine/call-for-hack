@@ -1,20 +1,25 @@
 class ProposalsController < ApplicationController
 	def new
-		@party = Party.first
+		@party = Party.current
 		return render :closed if @party.proposal_to < Date.today
 		@proposal = @party.proposals.new
 	end
 
 	def create
-		@party = Party.first
+		@party = Party.current
 		return render :closed if @party.proposal_to < Date.today
-		values = params.require(:proposal).permit %i(surname surname_private firstname firstname_private nickname twitter site format optimal_duration minimal_duration maximal_duration title description email phone)
-		availability = {}
-		%i(saturday sunday).each do |day|
-			availability[day] = {from: params["#{day}_from"], to: params["#{day}_to"]} if bool(params, day)
+		if params[:proposal][:avatar]
+			image = MiniMagick::Image.read params[:proposal][:avatar]
+			image.resize (image.height <= image.width ? '64x>' : 'x64>')
+			image.format 'png'
+			params[:proposal][:avatar] = image.to_blob
 		end
-		p values
-		values[:availability] = JSON.generate availability
+
+		values = params.require(:proposal).permit %i(surname surname_private firstname firstname_private nickname nickname_private twitter entity entity_site personnal_site format optimal_duration minimal_duration maximal_duration title description email phone avatar)
+
+		values[:availability] = Hash[
+			(@party.from .. @party.to).collect { |d| d.strftime '%F' }.select { |d| bool params[d], :available }
+									  .collect { |d| [d, {from: params[d][:from], to: params[d][:to]}] } ]
 
 		@proposal = @party.proposals.create values
 		unless @proposal.valid?
@@ -22,9 +27,12 @@ class ProposalsController < ApplicationController
 			return render :new
 		end
 
-		ProposalMailer.create(@proposal).deliver
-		ProposalMailer.notify(@proposal).deliver
+		if Rails.env == 'production'
+			ProposalMailer.create(@proposal).deliver
+			ProposalMailer.notify(@proposal).deliver
+		end
 		redirect_to action: :confirm
+		#redirect_to edit_proposal_path @proposal
 	end
 
 	def confirm
@@ -37,28 +45,16 @@ class ProposalsController < ApplicationController
 		flash[:success] = 'Proposition de conférence supprimée'
 	end
 
-	def show
-	end
-
 	def edit
 		@proposal = Proposal.find_by_token params[:id]
 		@party = @proposal.party
 		return render :closed if @party.proposal_to < Date.today
 	end
 
-	def update
+	def avatar
 		@proposal = Proposal.find_by_token params[:id]
-		@party = @proposal.party
-		values = params.require(:proposal).permit %i(surname surname_private firstname firstname_private nickname twitter site format optimal_duration minimal_duration maximal_duration title description email phone)
-		# availability = {}
-		# %i(saturday sunday).each do |day|
-		# 	availability[day] = {from: params["#{day}_from"], to: params["#{day}_to"]} if bool(params, day)
-		# end
-		p values
-		values[:availability] = JSON.generate availability
-
-		@proposal.update values
-		flash[:danger] = @proposal.errors.full_messages unless @proposal.valid?
-		render :edit
+		p @proposal.avatar
+		send_data @proposal.avatar, type: 'image/png', disposition: 'inline' and return if @proposal and @proposal.avatar
+		send_file 'app/assets/images/avatar.png', type: 'image/png', disposition: 'inline'
 	end
 end

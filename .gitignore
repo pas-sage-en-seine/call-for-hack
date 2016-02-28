@@ -10,3 +10,4 @@
 /.rakeTasks
 /Gemfile.lock
 /public/assets/
+/Makefile

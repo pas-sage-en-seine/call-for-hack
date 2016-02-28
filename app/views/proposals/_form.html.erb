@@ -23,20 +23,28 @@
 	</div>
 	<div class="form-group">
 		<%= f.label :nickname, 'Pseudo', class: %i(col-sm-2 control-label) %>
-		<div class="col-sm-10">
+		<div class="col-sm-8">
 			<%= f.text_field :nickname, placeholder: 'Pseudo', class: %i(form-control) %>
 		</div>
+		<div class="col-sm-2">
+			<%= f.check_box :nickname_private %>
+			<%= f.label :nickname_private, 'Privé' %>
+		</div>
 	</div>
-	<!-- div class="form-group">
+	<div class="form-group">
 		<%= f.label :avatar, 'Avatar', class: %i(col-sm-2 control-label) %>
-		<div class="col-sm-10">
+		<div class="col-sm-8">
 			<%= f.file_field :avatar, class: %i(form-control) %>
 			<span class="help-block">
 				Image de votre avatar ou une photo de vous.
 				Taille minimum 64x64 pixels de préférence carré au format .jpg ou .png
 			</span>
 		</div>
-	</div-->
+		<div class="col-sm-2">
+			<% p f.object %>
+			<%= image_tag f.object.persisted? ? avatar_proposal_path(f.object, format: :png) : url_to_image('avatar.png'), alt: 'Avatar' %>
+		</div>
+	</div>
 	<div class="form-group">
 		<%= f.label :twitter, 'Twitter', class: %i(col-sm-2 control-label) %>
 		<div class="col-sm-10">
@@ -44,15 +52,27 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<%= f.label :site, 'Site Internet', class: %i(col-sm-2 control-label) %>
+		<%= f.label :personnal_site, 'Site Internet personnel', class: %i(col-sm-2 control-label) %>
 		<div class="col-sm-10">
-			<%= f.text_field :site, placeholder: 'https://', class: %i(form-control) %>
+			<%= f.text_field :personnal_site, placeholder: 'https://', class: %i(form-control) %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :entity, 'Organisation', class: %i(col-sm-2 control-label) %>
+		<div class="col-sm-10">
+			<%= f.text_field :entity, class: %i(form-control) %>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :entity_site, 'Site Internet organisation', class: %i(col-sm-2 control-label) %>
+		<div class="col-sm-10">
+			<%= f.text_field :entity_site, placeholder: 'https://', class: %i(form-control) %>
 		</div>
 	</div>
 	<div class="form-group">
 		<%= f.label :format, 'Intervention', class: %i(col-sm-2 control-label) %>
 		<div class="col-sm-10">
-			<%= f.select :format, options_for_select([%w(Conférence conference), %w(Atelier workshop), %w(Démonstration exhibit)]), {}, class: %i(form-control) %>
+			<%= f.select :format, options_for_select([%w(Conférence conference), %w(Atelier workshop), %w(Démonstration exhibit), %w(Cours lesson)], f.object.format), {}, class: %i(form-control) %>
 		</div>
 	</div>
 	<div class="form-group">
@@ -63,7 +83,7 @@
 		</div>
 		<%= f.label :minimal_duration, 'min', class: %i(col-sm-1 control-label) %>
 		<div class="col-sm-2">
-			<%= f.text_field :optimal_duration, placeholder: '30min', class: %i(form-control) %>
+			<%= f.text_field :minimal_duration, placeholder: '30min', class: %i(form-control) %>
 		</div>
 		<%= f.label :maximal_duration, 'max', class: %i(col-sm-1 control-label) %>
 		<div class="col-sm-2">
@@ -73,13 +93,13 @@
 	<div class="form-group">
 		<%= f.label :title, 'Titre', class: %i(col-sm-2 control-label) %>
 		<div class="col-sm-10">
-			<%= f.text_field :title, class: %i(form-control) %>
+			<%= f.text_field :title, class: %i(form-control), required: true %>
 		</div>
 	</div>
 	<div class="form-group">
 		<%= f.label :description, 'Description', class: %i(col-sm-2 control-label) %>
 		<div class="col-sm-10">
-			<%= f.text_area :description, class: %i(form-control) %>
+			<%= f.text_area :description, class: %i(form-control), required: true %>
 			<span class="help-block">
 				Environs 500 signes espaces compris.
 			</span>
@@ -93,7 +113,7 @@
 	<div class="form-group">
 		<%= f.label :email, 'Email', class: %i(col-sm-2 control-label) %>
 		<div class="col-sm-10">
-			<%= f.email_field :email, placeholder: 'foo@example.org', class: %i(form-control) %>
+			<%= f.email_field :email, placeholder: 'foo@example.org', class: %i(form-control), required: true %>
 			<span class="help-block">
 				Il est très important de renseigner une
 				adresse e-mail valide et non jetable,
@@ -112,34 +132,22 @@
 
 <fieldset>
 	<legend>Disponibilités</legend>
-
-	<div class="form-group">
-		<label class="col-sm-3 control-label">
-			Samedi
-			<%= check_box_tag :saturday, nil, class: %i(form-control) %>
-		</label>
-		<%= label_tag :saturday_from, 'De', class: %i(col-sm-1 control-label) %>
-		<div class="col-sm-3">
-			<%= select_tag :saturday_from, options_for_select(Proposal.hours), class: %i(form-control) %>
-		</div>
-		<%= label_tag :saturday_to, 'À', class: %i(col-sm-1 control-label) %>
-		<div class="col-sm-3">
-			<%= select_tag :saturday_to, options_for_select(Proposal.hours), class: %i(form-control) %>
-		</div>
-	</div>
-
-	<div class="form-group">
-		<label class="col-sm-3 control-label">
-			Dimanche
-			<%= check_box_tag :sunday, nil, class: %i(form-control) %>
-		</label>
-		<%= label_tag :sunday_from, 'De', class: %i(col-sm-1 control-label) %>
-		<div class="col-sm-3">
-			<%= select_tag :sunday_from, options_for_select(Proposal.hours), class: %i(form-control) %>
-		</div>
-		<%= label_tag :sunday_to, 'À', class: %i(col-sm-1 control-label) %>
-		<div class="col-sm-3">
-			<%= select_tag :sunday_to, options_for_select(Proposal.hours), class: %i(form-control) %>
-		</div>
-	</div>
+	<% (@party.from .. @party.to).each do |day| %>
+		<%= fields_for day.strftime('%F'), @proposal.available(day) do |f_d| %>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">
+					<%= t('date.day_names')[day.cwday] %> <%= day.day %>
+					<%= f_d.check_box :available %>
+				</label>
+				<%= f_d.label :from, 'De', class: %i(col-sm-1 control-label) %>
+				<div class="col-sm-3">
+					<%= f_d.select :from, options_for_select(Proposal.hours, f_d.object.from), {}, class: %i(form-control) %>
+				</div>
+				<%= f_d.label :to, 'À', class: %i(col-sm-1 control-label) %>
+				<div class="col-sm-3">
+					<%= f_d.select :to, options_for_select(Proposal.hours, f_d.object.to), {}, class: %i(form-control) %>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
 </fieldset>

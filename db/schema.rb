@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009193301) do
+ActiveRecord::Schema.define(version: 20150413210748) do
 
   create_table "admins", force: true do |t|
-    t.text     "name"
-    t.text     "login"
-    t.text     "password"
+    t.string   "name"
+    t.string   "login"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20141009193301) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "marks", ["admin_id", "proposal_id"], name: "index_marks_on_admin_id_and_proposal_id", unique: true
 
   create_table "parties", force: true do |t|
     t.date     "from",          null: false
@@ -39,26 +41,29 @@ ActiveRecord::Schema.define(version: 20141009193301) do
 
   create_table "proposals", force: true do |t|
     t.integer  "party_id",          null: false
-    t.text     "firstname"
+    t.string   "firstname"
     t.boolean  "firstname_private"
-    t.text     "surname"
+    t.string   "surname"
     t.boolean  "surname_private"
-    t.text     "nickname"
-    t.text     "avatar"
+    t.string   "nickname"
+    t.binary   "avatar"
     t.text     "twitter"
-    t.text     "site"
+    t.text     "personnal_site"
     t.text     "format"
-    t.text     "minimal_duration"
-    t.text     "optimal_duration"
-    t.text     "maximal_duration"
-    t.text     "title"
+    t.string   "minimal_duration"
+    t.string   "optimal_duration"
+    t.string   "maximal_duration"
+    t.string   "title"
     t.text     "description"
-    t.text     "email"
-    t.text     "phone"
+    t.string   "email"
+    t.string   "phone"
     t.text     "availability"
-    t.text     "token"
+    t.string   "token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "nickname_private"
+    t.string   "entity"
+    t.string   "entity_site"
   end
 
 end

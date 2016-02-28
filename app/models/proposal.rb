@@ -1,4 +1,37 @@
 class Proposal < ActiveRecord::Base
+	class Available
+		attr_accessor :date, :from, :to
+		def initialize(date, json)
+			@date = date
+			@from = json['from']
+			@to = json['to']
+		end
+
+		def available
+			true
+		end
+	end
+	class NotAvailable
+		attr_accessor :date
+		def initialize(date)
+			@date = date
+		end
+
+		def from
+			nil
+		end
+
+		def to
+			nil
+		end
+
+		def available
+			false
+		end
+	end
+
+	store :availability, coder: JSON
+
 	belongs_to :party
 	has_many :marks
 
@@ -32,5 +65,15 @@ class Proposal < ActiveRecord::Base
 
 	def score
 		self.marks.size
+	end
+
+	def available(date)
+		available = self.availability[date.strftime('%F')]
+		if available
+			available = Available.new date, available
+		else
+			available = NotAvailable.new date
+		end
+		available
 	end
 end

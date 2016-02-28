@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.6'
+gem 'rails', '4.2.5'
 
 gem 'sqlite3'
-gem 'pg', group: :production
+#gem 'pg', group: :production
 
-gem 'scrypt'
+#gem 'scrypt'
+#gem 'mini_magick'
 
 group :assets do
 	gem 'sass-rails'
@@ -22,8 +23,9 @@ group :assets do
 end
 
 group :development do
-	gem 'debase'
-	gem 'ruby-debug-ide'
+	#gem 'debase'
+	#gem 'ruby-debug-ide'
+	gem 'pry-rails'
 
 	gem 'thin'
 	gem 'better_errors'

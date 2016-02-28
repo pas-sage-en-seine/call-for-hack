@@ -10,3 +10,4 @@ class CreateParties < ActiveRecord::Migration
 		end
 	end
 end
+t

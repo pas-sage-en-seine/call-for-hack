@@ -4,9 +4,13 @@ class Admin::Controller < ApplicationController
 
 	private
 	def authenticate
-		authenticate_or_request_with_http_basic do |username, password|
-			@me = Admin.find_by_login username
-			!@me.nil? && @me.good_password?(password)
+		if Rails.env == 'production'
+			authenticate_or_request_with_http_basic do |username, password|
+				@me = Admin.find_by_login username
+				!@me.nil? && @me.good_password?(password)
+			end
+		else
+			@me = Admin.find_by_login 'aeris+ubuntu@imirhil.fr'
 		end
 	end
 end

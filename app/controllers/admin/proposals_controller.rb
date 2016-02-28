@@ -1,6 +1,6 @@
 class Admin::ProposalsController < Admin::Controller
 	def index
-		@party = Party.first
+		@party = Party.current
 		@proposals = @party.proposals.sort do |a, b|
 			score = b.score <=> a.score
 			score.zero? ? (a.title <=> b.title) : score
