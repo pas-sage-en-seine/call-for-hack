@@ -8,13 +8,9 @@ class CreateProposals < ActiveRecord::Migration
 			t.string :surname
 			t.boolean :surname_private
 			t.string :nickname
-			t.binary :avatar
 			t.string :twitter
 			t.string :site
 			t.string :format
-			t.string :minimal_duration
-			t.string :optimal_duration
-			t.string :maximal_duration
 			t.string :title
 			t.text :description
 			t.string :email

@@ -3,9 +3,6 @@ Rails.application.routes.draw do
 		collection do
 			get :confirm
 		end
-		member do
-			get :avatar, constraints: { format: :png }
-		end
 	end
 
 	namespace :admin do

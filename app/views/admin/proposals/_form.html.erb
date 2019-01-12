@@ -32,10 +32,9 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<%= f.label :avatar, 'Avatar', class: %i(col-sm-2 control-label) %>
+		<%= f.label :mastodon, 'Mastodon', class: %i(col-sm-2 control-label) %>
 		<div class="col-sm-10">
-			<% p f.object %>
-			<%= image_tag f.object.persisted? ? avatar_proposal_path(f.object, format: :png) : url_to_image('avatar.png'), alt: 'Avatar' %>
+			<%= f.text_field :mastodon, placeholder: '@you@your.instance', class: %i(form-control) %>
 		</div>
 	</div>
 	<div class="form-group">
@@ -65,22 +64,8 @@
 	<div class="form-group">
 		<%= f.label :format, 'Intervention', class: %i(col-sm-2 control-label) %>
 		<div class="col-sm-10">
-			<%= f.select :format, options_for_select([%w(Conférence conference), %w(Atelier workshop), %w(Démonstration exhibit), %w(Cours lesson)], f.object.format), {}, class: %i(form-control) %>
-		</div>
-	</div>
-	<div class="form-group">
-		<%= label_tag nil, 'Durée', class: %i(col-sm-2 control-label) %>
-		<%= f.label :optimal_duration, 'souhaitée', class: %i(col-sm-2 control-label) %>
-		<div class="col-sm-2">
-			<%= f.text_field :optimal_duration, placeholder: '1h', class: %i(form-control) %>
-		</div>
-		<%= f.label :minimal_duration, 'min', class: %i(col-sm-1 control-label) %>
-		<div class="col-sm-2">
-			<%= f.text_field :minimal_duration, placeholder: '30min', class: %i(form-control) %>
-		</div>
-		<%= f.label :maximal_duration, 'max', class: %i(col-sm-1 control-label) %>
-		<div class="col-sm-2">
-			<%= f.text_field :maximal_duration, placeholder: '2h', class: %i(form-control) %>
+			<%= f.select :format, options_for_select(
+				%i(conference workshop).collect { |n| [ t("format.#{n}"), n ] }, f.object.format), {}, class: %i(form-control) %>
 		</div>
 	</div>
 	<div class="form-group">
@@ -94,7 +79,7 @@
 		<div class="col-sm-10">
 			<%= f.text_area :description, class: %i(form-control), required: true %>
 			<span class="help-block">
-				Environs 500 signes espaces compris.
+				Environs 500 signes espaces comprises.
 			</span>
 		</div>
 	</div>
@@ -126,7 +111,7 @@
 <fieldset>
 	<legend>Disponibilités</legend>
 
-	<% (@party.from .. @party.to).each do |day| %>
+	<% @party.days.each do |day| %>
 		<%= fields_for day.strftime('%F'), @proposal.available(day) do |f_d| %>
 			<div class="form-group">
 				<label class="col-sm-3 control-label">

@@ -1,37 +1,16 @@
-<% title 'Proposer une conférence' %>
+<% title t :call_for_paper %>
 <div class="container">
 	<div class="row">
-		<div class="col-sm-7">
-			<h1>Appel à conférences</h1>
+		<div class="col-sm-12">
+			<h1><%= t :call_for_paper %></h1>
 		</div>
-		<div class="col-sm-5 right">
-			<h2>Pour l’appel à bénévoles</h2>
-			<p>
-				<a href="http://participer.ubuntu-paris.org/?appel=benevole" class="btn btn-primary btn-lg">
-					C'est par ici
-				</a>
-			</p>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="page-header"></div>
 	</div>
 
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="alert alert-info">
-				<p>
-					Merci de renseigner les informations ci-dessous.
-					Il sera possible de corriger ces renseignements jusqu'au
-					<%= l @party.proposal_to %>, date de l’impression des
-					programmes papier.
-				</p>
-				<p>
-					Pour la modification des informations, une URL vous sera
-					envoyée par mail,
-					<strong>utilisez donc une adresse mail valide.</strong>
-				</p>
+				<p><%= t :thanks_for_filling, date: l(@party.proposal_to) %></p>
+				<p><%= raw t :mail_for_editing %></p>
 			</div>
 		</div>
 	</div>
@@ -45,7 +24,7 @@
 
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
-								<%= f.submit 'Soumettre', class: %i(btn btn-primary btn-lg pull-right) %>
+								<%= f.submit t(:submit), class: %i(btn btn-primary btn-lg pull-right) %>
 							</div>
 						</div>
 				<% end %>
@@ -57,8 +36,8 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<% if @party.proposal_to >= Date.today
-						  remaining_days = (@party.proposal_to - Date.today).to_i
-						  duration_days = (@party.proposal_to - @party.proposal_from).to_i
+						  remaining_days = (@party.proposal_to.to_date - Date.today).to_i
+						  duration_days = (@party.proposal_to.to_date - @party.proposal_from.to_date).to_i
 						  percentage = 100 - remaining_days * 100 / duration_days
 						  color = case percentage
 									 when 0..75 then :success
@@ -66,14 +45,14 @@
 									 when 90..100 then :error
 								  end
 					%>
-						<h2>Clôture dans <%= remaining_days %> jours</h2>
+						<h2><%= t :close_in, days: number_to_human(remaining_days) %></h2>
 						<div class="progress">
 							<div class="progress-bar progress-bar-<%= color %> progress-bar-striped active" role="progressbar" style="width: <%= percentage %>%;">
-								<span class="sr-only"><%= percentage %>% complété</span>
+								<span class="sr-only"><%= percentage %>%</span>
 							</div>
 						</div>
 					<% else %>
-						<h1>Clôturé</h1>
+						<h1><%= t :closed %></h1>
 					<% end %>
 				</div>
 			</div>
@@ -83,57 +62,29 @@
 					<div class="panel panel-default">
 						<div class="panel-body justify">
 							<p>
-								<strong>
-									Données personnelles
-								</strong>
+								<strong><%= t 'personnal_data.title' %></strong>
 							</p>
-							<p>
-								Ces informations sont nécessaires à l’équipe
-								d’organisation de l’événement, elles ne sont pas
-								destinées à être divulguées à un quelconque
-								partenaire ni à servir une opération de spam.
+							<p><%= t 'personnal_data.content' %></p>
+							<p class="success">
+								<strong><%= t 'public_data.title' %></strong>
 							</p>
 							<p class="success">
-								<strong>
-									Informations publiques
-								</strong>
-							</p>
-							<p class="success">
-								Elles seront publiées en totalités ou de façon
-								partielles sur le site ubuntu-paris.org, le
-								programme papier, l’application pour téléphone
-								Android et au format ICal.
+								<%= t 'public_data.content' %>
 							</p>
 							<p class="warning">
-								<strong>
-									Informations privées
-								</strong>
+								<strong><%= t 'private_data.title' %></strong>
 							</p>
 							<p class="warning">
-								Ces informations sont nécessaires à l’équipe
-								d’organisation de l’événement, elles ne sont pas
-								destinées à être divulguées à un quelconque
-								partenaire ni à servir une opération de spam.
+								<%= t 'private_data.content' %>
 							</p>
 							<p class="danger">
-								<strong>
-									Nom et prénom
-								</strong>
+								<strong><%= t 'name_surname.title' %></strong>
 							</p>
 							<p class="danger">
-								Vous pouvez choisir de ne pas afficher
-								publiquement votre nom et prénom en cochant la
-								case « privé ».
+								<%= t 'name_surname.content' %>
 							</p>
 						</div>
 					</div>
-
-					<fieldset>
-						<legend>Attention</legend>
-						Pour la gestion des badges et des repas, vous devrez renseigner
-						<%= link_to 'le formulaire bénévole', 'http://participer.ubuntu-paris.org/?appel=benevole' %>
-						si votre conférence est retenue !
-					</fieldset>
 				</div>
 			</div>
 		</div>

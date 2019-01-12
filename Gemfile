@@ -1,12 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.5'
+gem 'rails', '5.0.2'
 
-gem 'sqlite3'
-#gem 'pg', group: :production
-
-#gem 'scrypt'
-#gem 'mini_magick'
+gem 'scrypt'
+gem 'puma'
 
 group :assets do
 	gem 'sass-rails'
@@ -22,16 +19,20 @@ group :assets do
 	gem 'uglifier'
 end
 
+group :production do
+	gem 'pg', '< 1.0'
+end
+
 group :development do
+	gem 'sqlite3'
 	#gem 'debase'
 	#gem 'ruby-debug-ide'
 	gem 'pry-rails'
 
-	gem 'thin'
 	gem 'better_errors'
 	gem 'binding_of_caller'
-	gem 'quiet_assets'
+	#gem 'quiet_assets'
 
-	gem 'guard-livereload', require: false
+	gem 'guard-livereload'
 	gem 'rack-livereload'
 end

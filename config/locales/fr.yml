@@ -1,15 +1,83 @@
-# French translations for Ruby on Rails
-# by Christian Lescuyer (christian@flyingcoders.com)
-# contributors:
-#  - Sebastien Grosjean - ZenCocoon.com
-#  - Bruno Michel - http://github.com/nono
-#  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
-# Emended by Benjamin des Gachons and Patrick Chew : <http://www.fitima.org/docs/fiche.pdf>
-
 fr:
-  conference: Conférence
-  exhibit: Démonstration
-  workshop: Atelier
+  call_for_paper: Appel à conférences
+  for_call_for_volunteers: Pour l’appel à bénévoles
+  it_s_here: C’est par ici
+  thanks_for_filling: Merci de renseigner les informations ci-dessous.
+                      Il sera possible de corriger ces renseignements jusqu'au
+                      %{date}, date de l’impression des
+                      programmes papier.
+  mail_for_editing: Pour la modification des informations, une URL vous sera
+                    envoyée par mail, <strong>utilisez donc une adresse mail valide.</strong>
+  submit: Soumettre
+  close_in: Clôture dans %{days} jours
+  closed: Clôturé
+  personnal_data:
+    title: Données personnelles
+    content: Ces informations sont nécessaires à l’équipe
+              d’organisation de l’événement, elles ne sont pas
+              destinées à être divulguées à un quelconque
+              partenaire ni à servir une opération de spam.
+  public_data:
+    title: Informations publiques
+    content: Elles seront publiées en totalités ou de façon
+              partielles sur le site de Pas Sage En Seine, le
+              programme papier, l’application pour téléphone
+              Android et au format ICal.
+  private_data:
+    title: Informations privées
+    content: Ces informations sont nécessaires à l’équipe
+              d’organisation de l’événement, elles ne sont pas
+              destinées à être divulguées à un quelconque
+              partenaire ni à servir une opération de spam.
+  name_surname:
+    title: Nom et prénom
+    content: Vous pouvez choisir de ne pas afficher publiquement votre nom et
+              prénom en cochant la case « privé ».
+  warning: Attention
+  fill_volunteers: Pour la gestion des badges et des repas, vous devrez renseigner
+                  %{link} si votre conférence est retenue !
+  volunteers_form: le formulaire bénévole
+  avatar_help: Image de votre avatar ou une photo de vous.
+                Taille minimum 64x64 pixels, de préférence carré au format .jpg ou .png
+  description_help: Environs 500 signes espaces compris.
+  email_help: Il est très important de renseigner une
+              adresse e-mail valide et non jetable,
+              sans quoi nous ne pourrons pas prendre
+              en compte cette participation.
+
+  title_single_month: Festival Pas Sage en Seine, du %{from_day} au %{to_day} %{to_month} %{year}
+  title_dual_month: Festival Pas Sage en Seine, du %{from_day} %{from_month} au %{to_day} %{to_month} %{year}
+
+  availability: Disponibilités
+  duration: Durée
+  from: De
+  to: à
+  format:
+    conference: Conférence (1h)
+    workshop: Atelier (30min)
+
+
+  activerecord:
+    attributes:
+      proposal:
+        surname: Nom
+        surname_private: Privé
+        firstname: Prénom
+        firstname_private: Privé
+        nickname: Pseudonyme
+        nickname_private: Privé
+        avatar: Avatar
+        personnal_site: Site personnel
+        entity: Organisation
+        entity_site: Site de l’organisation
+        format: Format de conférence
+        optimal_duration: souhaité
+        minimal_duration: minimal
+        maximal_duration: maximal
+        title: Titre
+        description: Description
+        email: Email
+        phone: Téléphone
 
   date:
     day_names: [dimanche, lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche]
@@ -18,7 +86,7 @@ fr:
     abbr_month_names: [~, jan., fév., mar., avr., mai, juin, juil., août, sept., oct., nov., déc.]
     formats:
       default: "%d/%m/%Y"
-      short: "%e %b"
+      short: "%e %B"
       long: "%e %B %Y"
     order:
       - :day

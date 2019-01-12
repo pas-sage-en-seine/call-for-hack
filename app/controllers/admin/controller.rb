@@ -10,7 +10,8 @@ class Admin::Controller < ApplicationController
 				!@me.nil? && @me.good_password?(password)
 			end
 		else
-			@me = Admin.find_by_login 'aeris+ubuntu@imirhil.fr'
+			@me = Admin.find_by_login 'aeris'
+			!@me.nil?
 		end
 	end
 end

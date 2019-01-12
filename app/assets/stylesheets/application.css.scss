@@ -10,7 +10,7 @@
 @import "bootstrap";
 
 .left {
-  text-align: left;
+	text-align: left;
 }
 
 .right {
@@ -44,4 +44,18 @@ body {
 .navbar-brand {
 	font-weight: bold;
 	font-size: 25px;
+}
+
+table, fieldset, .help-block, .panel, .well {
+	color: $gray-dark;
+}
+
+thead, tfoot {
+	color: $text-color;
+}
+
+.table-striped {
+	> tbody > tr:nth-of-type(even) {
+		color: $text-color;
+	}
 }

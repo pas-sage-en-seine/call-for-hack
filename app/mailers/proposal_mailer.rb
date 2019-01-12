@@ -1,5 +1,5 @@
 class ProposalMailer < ActionMailer::Base
-	default from: 'participer16.04@ubuntu-paris.org'
+	default from: 'cfh@passageenseine.fr'
 
 	def create(proposal)
 		@proposal = proposal
@@ -8,6 +8,6 @@ class ProposalMailer < ActionMailer::Base
 
 	def notify(proposal)
 		@proposal = proposal
-		mail to: 'participer16.04@ubuntu-paris.org', subject: 'Soumission d’une conférence'
+		mail to: 'cfh@passageenseine.fr', subject: 'Soumission d’une conférence'
 	end
 end
