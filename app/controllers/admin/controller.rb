@@ -10,7 +10,7 @@ class Admin::Controller < ApplicationController
 				!@me.nil? && @me.good_password?(password)
 			end
 		else
-			@me = Admin.find_by_login 'aeris'
+			@me = Admin.find_by_login 'Norore'
 			!@me.nil?
 		end
 	end

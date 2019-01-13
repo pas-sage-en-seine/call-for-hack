@@ -7,7 +7,7 @@ fr:
                       %{date}, date de l’impression des
                       programmes papier.
   mail_for_editing: Pour la modification des informations, une URL vous sera
-                    envoyée par mail, <strong>utilisez donc une adresse mail valide.</strong>
+                    envoyée par courriel, <strong>utilisez donc une adresse courriel valide.</strong>
   submit: Soumettre
   close_in: Clôture dans %{days} jours
   closed: Clôturé
@@ -19,10 +19,10 @@ fr:
               partenaire ni à servir une opération de spam.
   public_data:
     title: Informations publiques
-    content: Elles seront publiées en totalités ou de façon
+    content: Elles seront publiées en totalité ou de façon
               partielles sur le site de Pas Sage En Seine, le
               programme papier, l’application pour téléphone
-              Android et au format ICal.
+              Android et au format iCal.
   private_data:
     title: Informations privées
     content: Ces informations sont nécessaires à l’équipe
@@ -32,16 +32,16 @@ fr:
   name_surname:
     title: Nom et prénom
     content: Vous pouvez choisir de ne pas afficher publiquement votre nom et
-              prénom en cochant la case « privé ».
+              prénom en cochant la case « privé ».
   warning: Attention
   fill_volunteers: Pour la gestion des badges et des repas, vous devrez renseigner
-                  %{link} si votre conférence est retenue !
+                  %{link} si votre proposition est retenue !
   volunteers_form: le formulaire bénévole
   avatar_help: Image de votre avatar ou une photo de vous.
                 Taille minimum 64x64 pixels, de préférence carré au format .jpg ou .png
-  description_help: Environs 500 signes espaces compris.
+  description_help: Environ 500 signes, espaces comprises.
   email_help: Il est très important de renseigner une
-              adresse e-mail valide et non jetable,
+              adresse courriel valide et non jetable,
               sans quoi nous ne pourrons pas prendre
               en compte cette participation.
 
@@ -53,9 +53,8 @@ fr:
   from: De
   to: à
   format:
-    conference: Conférence (1h)
-    workshop: Atelier (30min)
-
+    conference: Conférence
+    workshop: Atelier
 
   activerecord:
     attributes:
@@ -70,13 +69,11 @@ fr:
         personnal_site: Site personnel
         entity: Organisation
         entity_site: Site de l’organisation
-        format: Format de conférence
-        optimal_duration: souhaité
-        minimal_duration: minimal
-        maximal_duration: maximal
+        format: Format de l'intervention
+        duration: Durée
         title: Titre
         description: Description
-        email: Email
+        email: Courriel
         phone: Téléphone
 
   date:
@@ -137,6 +134,8 @@ fr:
       month:  "Mois"
       second: "Seconde"
       year:   "Année"
+    formats:
+      long: "%e %B %Y à %H:%M"
   errors:
     format: "%{attribute} %{message}"
     messages: &errors_messages
@@ -159,8 +158,8 @@ fr:
       odd: "doit être impair"
       record_invalid: "La validation a échoué : %{errors}"
       restrict_dependent_destroy:
-        one: "Suppression impossible: un autre enregistrement est lié"
-        many: "Suppression impossible: d'autres enregistrements sont liés"
+        one: "Suppression impossible : un autre enregistrement est lié"
+        many: "Suppression impossible : d'autres enregistrements sont liés"
       taken: "n'est pas disponible"
       too_long:
         one: "est trop long (pas plus d'un caractère)"
@@ -173,10 +172,10 @@ fr:
         other: "ne fait pas la bonne longueur (doit comporter %{count} caractères)"
       other_than: "doit être différent de %{count}"
     template: &errors_template
-      body: "Veuillez vérifier les champs suivants : "
+      body: "Veuillez vérifier les champs suivants : "
       header:
-        one:   "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"
-        other: "Impossible d'enregistrer ce(tte) %{model} : %{count} erreurs"
+        one:   "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"
+        other: "Impossible d'enregistrer ce(tte) %{model} : %{count} erreurs"
   helpers:
     select:
       prompt: "Veuillez sélectionner"
@@ -241,6 +240,6 @@ fr:
     am: 'am'
     formats:
       default: "%d %B %Y %H h %M min %S s"
-      long: "%A %d %B %Y %H h %M"
-      short: "%d %b %H h %M"
+      long: "%A %d %B %Y à %Hh %M"
+      short: "%d %b %Hh %M"
     pm: 'pm'

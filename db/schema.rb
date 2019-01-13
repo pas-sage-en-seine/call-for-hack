@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180228231026) do
+ActiveRecord::Schema.define(version: 20190113165115) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20180228231026) do
     t.string   "entity"
     t.string   "entity_site"
     t.string   "mastodon"
+    t.string   "duration"
   end
 
 end

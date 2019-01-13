@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
-			<%= link_to root_path, class: %i(navbar-brand) do %>
+			<%= link_to root_path, title: "Cliquer ici pour revenir à la page d'accueil", class: %i(navbar-brand) do %>
 				<%= image_tag 'logo.png', style: 'display: inline' %>
 				<%= Party.current.title %>
 			<% end %>
