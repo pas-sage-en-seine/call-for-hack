@@ -37,7 +37,8 @@ class Proposal < ActiveRecord::Base
 
 	validates :title, :description, :email, presence: true
 	validates :nickname, presence: { message: 'Vous devez renseigner un nom ou un pseudonyme'}, unless: :surname?
-	validates :format, inclusion: { in: %w(conference workshop exhibit)}
+	validates :format, inclusion: { in: %w(conference workshop)}
+	validates :duration, inclusion: { in: %w(30min 1h 2h)}
 
 	before_create do
 		self.token = SecureRandom.hex 3

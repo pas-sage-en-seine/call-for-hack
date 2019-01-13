@@ -6,16 +6,16 @@
 			</div>
 			<h2>Échangeons et partageons, pour une société connectée plus libre !</h2>
 			<p>
-				Un air de liberté soufflera sur Choisy-le-Roi, du <%= l Party.current.from, format: :short %> au <%= l Party.current.to, format: :long %> : c’est le festival Pas Sage
+				Un air de liberté soufflera sur Choisy-le-Roi, du <%= l Party.current.from, format: :long %> au <%= l Party.current.to, format: :long %> : c’est le festival Pas Sage
 				En Seine !<br/>
 				Pas Sage En Seine est le festival numérique de tous les curieux, passionnés, bidouilleurs et
 				activistes.<br/>
 				Plus encore, Pas Sage En Seine est ouvert, sympa et on y parle de tout, avec tout le monde.
 			</p>
 			<p>
-				Alors, c’est vrai, le numérique fait partie intégrante de notre vie : nos combats, nos résistances et
+				Alors, c’est vrai, le numérique fait partie intégrante de notre vie : nos combats, nos résistances et
 				notre société toute entière sont connectés.<br/>
-				Mais saisissons-nous bien ses enjeux ?
+				Mais saisissons-nous bien ses enjeux ?
 			</p>
 			<p>
 				Envie d’en parler, de questionner, de troller dans la joie et la bonne humeur ?<br/>
@@ -25,12 +25,12 @@
 			<p>
 				Des ateliers, des conférences, des échanges, des rires, des jeux et bien d’autres choses encore.
 			</p>
-			<h3>Qui ?</h3>
+			<h3>Qui ?</h3>
 			<p>
 				Des individus et associations : ici, on parle librement, on se retrouve autour de thèmes qui nous concernent et nous importent.
 			</p>
 			<p>
-				Refaisons le monde, à travers d’échanges riches et partages délicieux : soyons pas sages en Seine ensemble !
+				Refaisons le monde, à travers d’échanges riches et partages délicieux : soyons pas sages en Seine ensemble !
 			</p>
 			<h3>Je veux participer !</h3>
 			<p>
@@ -40,10 +40,10 @@
 				Ne visitez pas Pas Sage En Seine : faites-le vivre et créons-le ensemble dès aujourd'hui !
 			</p>
 			<div class="text-center">
-				<%= link_to new_proposal_path, class: %i(btn btn-primary btn-lg) do %>
-					<%= image_tag 'rabbit.png' %>
+				<%= link_to new_proposal_path, title: "Cliquer ici pour soumettre une proposition d'intervention", class: %i(btn btn-primary btn-lg) do %>
+					<%= image_tag 'rabbit.png', alt: "Logo du festival" %>
 					C’est par ici
-					<%= image_tag 'rabbit.png' %>
+					<%= image_tag 'rabbit.png', alt: "Logo du festival" %>
 				<% end %>
 			</div>
 		</div>

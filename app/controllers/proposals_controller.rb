@@ -12,9 +12,8 @@ class ProposalsController < ApplicationController
 		return render :closed if @party.proposal_to < Date.today
 
 		values = params.require(:proposal).permit %i[surname surname_private
-		firstname firstname_private nickname nickname_private twitter entity
-		entity_site personnal_site format optimal_duration minimal_duration
-		maximal_duration title description email phone]
+		firstname firstname_private nickname nickname_private mastodon twitter entity
+		entity_site personnal_site format duration title description email phone]
 
 		values[:availability] = @party.days.collect { |d| d.strftime '%F' }
 										.select { |d| bool params[d], :available }
@@ -55,9 +54,8 @@ class ProposalsController < ApplicationController
 		@party    = @proposal.party
 
 		values = params.require(:proposal).permit %i[surname surname_private
-		firstname firstname_private nickname nickname_private twitter entity
-		entity_site personnal_site format optimal_duration minimal_duration
-		maximal_duration title description email phone]
+		firstname firstname_private nickname nickname_private mastodon twitter entity
+		entity_site personnal_site format duration title description email phone]
 
 		values[:availability] = @party.days.collect { |d| d.strftime '%F' }
 										.select { |d| bool params[d], :available }

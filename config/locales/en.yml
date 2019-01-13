@@ -32,11 +32,11 @@ en:
              "private" box.
   warning: Warning
   fill_volunteers: For the management of badges and meals, you must fill
-                    %{link} too if your conference is accepted!
+                    %{link} too if your proposal is accepted!
   volunteers_form: the volunteers form
   avatar_help:  Your avatar image or a picture of you.
                 Minimum size 64x64 pixels, preferably square and in .jpg or .png
-  description_help: About 500 characters including spaces.
+  description_help: About 500 characters, including spaces.
   email_help: It's very important to enter a valid and not disposable email address,
                 otherwise we will not consider your submission.
 
@@ -46,8 +46,8 @@ en:
   to: To
 
   format:
-      conference: Conference (1h)
-      workshop: Workshop (30min)
+      conference: Conference
+      workshop: Workshop
 
   activerecord:
     attributes:
@@ -63,9 +63,7 @@ en:
         entity: Organization
         entity_site: Organization website
         format: Talk format
-        optimal_duration: wanted
-        minimal_duration: minimal
-        maximal_duration: maximal
+        duration: Duration
         title: Title
         description: Description
         email: Email

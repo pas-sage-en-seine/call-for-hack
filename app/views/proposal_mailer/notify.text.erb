@@ -1,6 +1,7 @@
-Une proposition de conférence a été déposée
+Une proposition de <%= t("format.#{@proposal.format}") %> a été déposée :
 	<%= admin_proposal_url @proposal %>
 
 Nom : <%= @proposal.name %>
 Titre : <%= @proposal.title %>
 Description : <%= @proposal.description %>
+Durée : <%= @proposal.duration %>
