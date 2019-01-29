@@ -1,4 +1,4 @@
-class AddProposalInfo < ActiveRecord::Migration
+class AddProposalInfo < ActiveRecord::Migration[5.2]
 	def change
 		rename_column :proposals, :site, :personnal_site
 

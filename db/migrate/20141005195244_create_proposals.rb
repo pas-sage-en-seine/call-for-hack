@@ -1,4 +1,4 @@
-class CreateProposals < ActiveRecord::Migration
+class CreateProposals < ActiveRecord::Migration[5.2]
 	def change
 		create_table :proposals do |t|
 			t.references :party, null: false

@@ -1,4 +1,4 @@
-class ChangeDateToTimestamp < ActiveRecord::Migration[5.0]
+class ChangeDateToTimestamp < ActiveRecord::Migration[5.2]
   def change
 	change_column :parties, :proposal_from, :timestamp
 	change_column :parties, :proposal_to, :timestamp

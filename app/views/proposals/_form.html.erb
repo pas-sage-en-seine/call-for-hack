@@ -72,7 +72,7 @@
 		<%= f.label :duration, class: %i(col-sm-2 control-label) %>
 		<div class="col-sm-10">
 			<%= f.select :duration, options_for_select(
-				%i(30min 1h 2h).collect { |n| [ n ] }, f.object.duration), {}, class: %i(form-control) %>
+				%i(30min 1h 2h), f.object.duration || '1h'), {}, class: %i(form-control) %>
 		</div>
 	</div>
 	<div class="form-group">
@@ -123,7 +123,7 @@
 				</div>
 				<%= f_d.label :to, t(:to), class: %i(col-sm-1 control-label) %>
 				<div class="col-sm-3">
-					<%= f_d.select :to, options_for_select(Proposal.hours, f_d.object.to), {}, class: %i(form-control) %>
+					<%= f_d.select :to, options_for_select(Proposal.hours, f_d.object.to || '21h00'), {}, class: %i(form-control) %>
 				</div>
 			</div>
 		<% end %>

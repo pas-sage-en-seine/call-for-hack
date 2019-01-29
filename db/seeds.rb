@@ -1,3 +1,3 @@
 ActiveRecord::Base.transaction do
-	Party.create! from: '2017-06-29', to: '2017-07-02', proposal_from: '2017-04-15', proposal_to: '2017-05-15'
+	Party.create! from: '2019-06-27T11:00', to: '2019-06-30T20:00', proposal_from: '2019-02-01', proposal_to: '2019-04-15'
 end

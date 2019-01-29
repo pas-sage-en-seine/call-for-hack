@@ -1,10 +1,11 @@
 class Proposal < ActiveRecord::Base
 	class Available
 		attr_accessor :date, :from, :to
+
 		def initialize(date, json)
 			@date = date
 			@from = json['from']
-			@to = json['to']
+			@to   = json['to']
 		end
 
 		def available
@@ -13,6 +14,7 @@ class Proposal < ActiveRecord::Base
 	end
 	class NotAvailable
 		attr_accessor :date
+
 		def initialize(date)
 			@date = date
 		end
@@ -53,7 +55,8 @@ class Proposal < ActiveRecord::Base
 	end
 
 	def self.hours
-		%w(10h00 11h00 11h30 12h00 12h30 13h00 13h30 14h00 14h30 15h00 15h30 16h00 16h30 17h00 17h30 18h00 19h00 20h00 21h00)
+		%w[10h00 11h00 11h30 12h00 12h30 13h00 13h30 14h00 14h30 15h00 15h30
+		   16h00 16h30 17h00 17h30 18h00 19h00 20h00 21h00]
 	end
 
 	def to_param
@@ -71,10 +74,9 @@ class Proposal < ActiveRecord::Base
 	def available(date)
 		available = self.availability[date.strftime('%F')]
 		if available
-			available = Available.new date, available
+			Available.new date, available
 		else
-			available = NotAvailable.new date
+			NotAvailable.new date
 		end
-		available
 	end
 end

@@ -10,56 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190113165115) do
+ActiveRecord::Schema.define(version: 2019_01_13_165115) do
 
   create_table "admins", force: :cascade do |t|
-    t.string   "name"
-    t.string   "login"
-    t.string   "password"
+    t.string "name", limit: 255
+    t.string "login", limit: 255
+    t.string "password", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "marks", force: :cascade do |t|
-    t.integer  "admin_id"
-    t.integer  "proposal_id"
+    t.integer "admin_id"
+    t.integer "proposal_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["admin_id", "proposal_id"], name: "index_marks_on_admin_id_and_proposal_id", unique: true
   end
 
   create_table "parties", force: :cascade do |t|
-    t.datetime "from",          null: false
-    t.datetime "to",            null: false
+    t.datetime "from", null: false
+    t.datetime "to", null: false
     t.datetime "proposal_from", null: false
-    t.datetime "proposal_to",   null: false
+    t.datetime "proposal_to", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "proposals", force: :cascade do |t|
-    t.integer  "party_id",          null: false
-    t.string   "firstname"
-    t.boolean  "firstname_private"
-    t.string   "surname"
-    t.boolean  "surname_private"
-    t.string   "nickname"
-    t.string   "twitter"
-    t.string   "personnal_site"
-    t.string   "format"
-    t.string   "title"
-    t.text     "description"
-    t.string   "email"
-    t.string   "phone"
-    t.text     "availability"
-    t.string   "token"
+    t.integer "party_id", null: false
+    t.string "firstname", limit: 255
+    t.boolean "firstname_private"
+    t.string "surname", limit: 255
+    t.boolean "surname_private"
+    t.string "nickname", limit: 255
+    t.binary "avatar"
+    t.text "twitter"
+    t.text "personnal_site"
+    t.text "format"
+    t.string "minimal_duration", limit: 255
+    t.string "optimal_duration", limit: 255
+    t.string "maximal_duration", limit: 255
+    t.string "title", limit: 255
+    t.text "description"
+    t.string "email", limit: 255
+    t.string "phone", limit: 255
+    t.text "availability"
+    t.string "token", limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "nickname_private"
-    t.string   "entity"
-    t.string   "entity_site"
-    t.string   "mastodon"
-    t.string   "duration"
+    t.boolean "nickname_private"
+    t.string "entity", limit: 255
+    t.string "entity_site", limit: 255
+    t.string "mastodon"
+    t.string "duration"
   end
 
 end
