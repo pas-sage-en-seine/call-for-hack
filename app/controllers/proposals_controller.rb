@@ -26,12 +26,9 @@ class ProposalsController < ApplicationController
 			return render :new
 		end
 
-		if Rails.env == 'production'
-			ProposalMailer.create(@proposal).deliver
-			ProposalMailer.notify(@proposal).deliver
-		end
+		ProposalMailer.create(@proposal).deliver
+		ProposalMailer.notify(@proposal).deliver
 		redirect_to action: :confirm
-		#redirect_to edit_proposal_path @proposal
 	end
 
 	def confirm
