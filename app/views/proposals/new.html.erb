@@ -35,7 +35,7 @@
 		<div class="col-sm-4 container">
 			<div class="row">
 				<div class="col-sm-12">
-					<% if @party.proposal_to >= Date.today
+					<% if @party.proposal_to >= Time.now
 						  remaining_days = (@party.proposal_to.to_date - Date.today).to_i
 						  duration_days = (@party.proposal_to.to_date - @party.proposal_from.to_date).to_i
 						  percentage = 100 - remaining_days * 100 / duration_days

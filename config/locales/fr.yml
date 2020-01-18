@@ -239,7 +239,7 @@ fr:
   time:
     am: 'am'
     formats:
-      default: "%d %B %Y %H h %M min %S s"
+      default: "%d %B %Y %H h %M"
       long: "%A %d %B %Y à %Hh %M"
       short: "%d %b %Hh %M"
     pm: 'pm'

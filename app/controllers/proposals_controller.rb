@@ -1,15 +1,15 @@
 class ProposalsController < ApplicationController
 	def new
 		@party = Party.current
-		return render :soon if @party.proposal_from > Date.today
-		return render :closed if @party.proposal_to < Date.today
+		return render :soon if @party.proposal_from > Time.now
+		return render :closed if @party.proposal_to < Time.now
 		@proposal = @party.proposals.new
 	end
 
 	def create
 		@party = Party.current
-		return render :soon if @party.proposal_from > Date.today
-		return render :closed if @party.proposal_to < Date.today
+		return render :soon if @party.proposal_from > Time.now
+		return render :closed if @party.proposal_to < Time.now
 
 		values = params.require(:proposal).permit %i[surname surname_private
 		firstname firstname_private nickname nickname_private mastodon twitter entity
@@ -37,7 +37,7 @@ class ProposalsController < ApplicationController
 	def destroy
 		@proposal = Proposal.find_by_token params[:id]
 		@proposal.delete
-		return render :closed if @party.proposal_to < Date.today
+		return render :closed if @party.proposal_to < Time.today
 		flash[:success] = 'Proposition de conférence supprimée'
 	end
 
