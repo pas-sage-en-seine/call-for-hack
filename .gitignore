@@ -9,4 +9,5 @@
 /.generators
 /.rakeTasks
 /public/assets/
+/vendor/bundle/
 /Makefile
